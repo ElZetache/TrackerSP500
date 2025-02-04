@@ -1,23 +1,27 @@
 package objfinanzas;
 
-public class Empresa {
+public class EmpresaAnalisis {
     private String ticker;
     private String nombre;
     private double per;
     private String sector;
     private String industria;
     private double precioActual;
+    private double evEbitda;
 
-    public Empresa(String ticker, String nombre, double per, String sector, String industria, double precioActual) {
+
+
+    public EmpresaAnalisis(String ticker, String nombre, double per, String sector, String industria, double precioActual, double evEbitda) {
         this.ticker = ticker;
         this.nombre = nombre;
         this.per = per;
         this.sector = sector;
         this.industria = industria;
         this.precioActual = precioActual;
+        this.evEbitda = evEbitda;
     }
 
-    public Empresa() {
+    public EmpresaAnalisis() {
 
     }
 
@@ -67,6 +71,14 @@ public class Empresa {
 
     public void setPrecioActual(double precioActual) {
         this.precioActual = precioActual;
+    }
+
+    public double getEvEbitda() {
+        return evEbitda;
+    }
+
+    public void setEvEbitda(double evEbitda) {
+        this.evEbitda = evEbitda;
     }
 }
 

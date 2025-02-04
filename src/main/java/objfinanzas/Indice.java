@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Indice {
     private String nombre;
-    private List<Empresa> empresas;
+    private List<EmpresaAnalisis> empresaAnalises;
 
     public Indice() {
-        this.empresas = new ArrayList<>();
+        this.empresaAnalises = new ArrayList<>();
         this.nombre = new String();
     }
 
-    public void agregarValor(Empresa valor) {
-        empresas.add(valor);
+    public void agregarValor(EmpresaAnalisis valor) {
+        empresaAnalises.add(valor);
     }
 
     public void mostrarValores() {
-        for (Empresa valor : empresas) {
+        for (EmpresaAnalisis valor : empresaAnalises) {
             System.out.print(valor.getTicker() + " | ");
             System.out.print(valor.getNombre() + " | ");
             System.out.print(valor.getPer() + " | ");
@@ -26,8 +26,8 @@ public class Indice {
         }
     }
 
-    public List<Empresa> getEmpresas() {
-        return empresas;
+    public List<EmpresaAnalisis> getEmpresas() {
+        return empresaAnalises;
     }
 
     public String getNombre() {
@@ -38,7 +38,33 @@ public class Indice {
         this.nombre = nombre;
     }
 
-    public void setEmpresas(List<Empresa> valores) {
-        this.empresas = valores;
+    public void setEmpresas(List<EmpresaAnalisis> valores) {
+        this.empresaAnalises = valores;
+    }
+
+    public void perMenor(double per){
+        System.out.println("Ticker | Nombre | PER | EV/EBITDA | Sector");
+        for(EmpresaAnalisis empresaAnalisis : empresaAnalises){
+            if(per >= empresaAnalisis.getPer()){
+                System.out.print(empresaAnalisis.getTicker() + " | ");
+                System.out.print(empresaAnalisis.getNombre() + " | ");
+                System.out.print(empresaAnalisis.getPer() + " | ");
+                System.out.print(empresaAnalisis.getEvEbitda() + " | ");
+                System.out.println(empresaAnalisis.getSector());
+            }
+        }
+    }
+
+    public void evEbitdaMenor(double evEbitda){
+        System.out.println("Ticker | Nombre | PER | EV/EBITDA | Sector");
+        for(EmpresaAnalisis empresaAnalisis : empresaAnalises){
+            if(evEbitda >= empresaAnalisis.getEvEbitda()){
+                System.out.print(empresaAnalisis.getTicker() + " | ");
+                System.out.print(empresaAnalisis.getNombre() + " | ");
+                System.out.print(empresaAnalisis.getPer() + " | ");
+                System.out.print(empresaAnalisis.getEvEbitda() + " | ");
+                System.out.println(empresaAnalisis.getSector());
+            }
+        }
     }
 }

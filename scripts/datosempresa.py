@@ -29,7 +29,8 @@ def obtener_datos_empresas():
                 "Capitalización": info.get("marketCap", None),
                 "Dividendos": info.get("dividendYield", None),
                 "Precio Actual": info.get("currentPrice", None),
-                "Beta": info.get("beta", None)
+                "Beta": info.get("beta", None),
+                "EV/EBITDA": info.get("enterpriseToEbitda", None)
             })
         except Exception:
             pass
