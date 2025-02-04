@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Indice indx = new Indice();
+        Indice inpr = new Indice();
         Scanner input = new Scanner(System.in);
         int opcion = -1;
 
@@ -37,12 +38,27 @@ public class Main {
             case 2:
                 System.out.print("¿Cual es el EV/EBITDA maximo que quieres ver? : ");
                 int evEbitda = Integer.parseInt(input.nextLine());
-                indx.evEbitdaMenor(evEbitda);
+                indx.evEbitdaMenor(evEbitda).mostrarValores();
+            case 3:
+                calcularPerMedio(indx);
+                break;
             default:
                 break;
                 }
         }
 
+    }
+
+    private static void calcularPerMedio(Indice indx) {
+        double calc = 0;
+        int cnt = 0;
+
+        for(EmpresaAnalisis x: indx.getEmpresas()){
+            calc += x.getPer();
+            cnt++;
+        }
+        calc = calc/cnt;
+        System.out.println("El PER medio del indice es: " + calc);
     }
 
     private static Indice rellenarIndice(String nombreIndice) {
@@ -105,6 +121,7 @@ public class Main {
         System.out.println("-------------------------------");
         System.out.println("1. Filtrar por PER");
         System.out.println("2. Filtrar por EV/Ebitda");
+        System.out.println("3. Ver medias del indice");
 
         while (res == -1) {  // El bucle seguirá pidiendo la edad hasta que sea un número válido
             System.out.println("Introduce una opcion:");
